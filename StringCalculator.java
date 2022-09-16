@@ -7,6 +7,7 @@ public class StringCalculator {
     public int add(String input) throws Exception {
         if(input.startsWith(",") || input.startsWith("\\n")||input.endsWith(",") || input.endsWith("\\n"))
             throw new Exception("Wrong delimiters positioning");
+
         Pattern ThirdStep = Pattern.compile(",|(\\\\n)");
         Matcher WrongPositioning = ThirdStep.matcher(input);
         char[] InputInChar = input.toCharArray();
@@ -18,10 +19,8 @@ public class StringCalculator {
         if(input.startsWith("//")){
             String DelimitersInSubstring = input.substring(2, input.indexOf("\\n"));
             String FactualInput = input.substring(input.indexOf("\\n") + 2);
-            System.out.println(FactualInput);
             delimiters += DelimitersInSubstring.replace("[", "");
             delimiters = delimiters.replace("]", "");
-            System.out.println(delimiters);
             StringTokenizer result = new StringTokenizer(FactualInput, delimiters);
             while(result.hasMoreTokens()) {
                 OperatingNumbers(result.nextToken());
@@ -36,6 +35,7 @@ public class StringCalculator {
                 OperatingNumbers(output.nextToken());
             }
         }
+
         if(NegativeNumbers.size() != 0)
             throw new Exception("Negative numbers are not allowed\n" + NegativeNumbers);
 
