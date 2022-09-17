@@ -61,13 +61,16 @@ public class StringCalculator {
         }
 
         if(NegativeNumbers.size() != 0)
-            throw new Exception("Negative numbers are not allowed\n" + NegativeNumbers);
+            System.out.println("Negative numbers are not allowed\n" + NegativeNumbers);
+            //throw new Exception("Negative numbers are not allowed\n" + NegativeNumbers);
 
         return sum;
     }
     private void OperatingNumbers(String PreOutput){
-        if(Integer.parseInt(PreOutput) < 0)
+        if(Integer.parseInt(PreOutput) < 0){
             NegativeNumbers.add(Integer.parseInt(PreOutput));
+            return;
+        }
         if(Integer.parseInt(PreOutput) > 1000)
             return;
         sum+=Integer.parseInt(PreOutput);
